@@ -1,0 +1,126 @@
+A51 MACRO ASSEMBLER  MAIN                                                                 12/13/2018 00:07:50 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.7.0
+OBJECT MODULE PLACED IN .\Objects\main.obj
+ASSEMBLER INVOKED BY: E:\KeilC\Keil8051\Keil8051\C51\BIN\A51.EXE main.a51 SET(SMALL) DEBUG PRINT(.\Listings\main.lst) OB
+                      JECT(.\Objects\main.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+                       1     
+0000                   2     ORG 0000H  
+0000 020030            3     LJMP MAIN
+                       4     
+000B                   5     ORG 000BH
+000B 758A00            6     MOV TL0,#000H
+000E 758CEE            7     MOV TH0,#0EEH
+0011 32                8     reti
+                       9     
+                      10     
+001B                  11     ORG   001BH ;ISR_TIM1
+001B 758B04           12     MOV TL1,#004H           ;3C
+001E 758D4C           13     MOV TH1, #04CH  
+                      14     
+0021 DF03             15     DJNZ R7,OUT                     ;2C             
+0023 08               16     INC R0                          ; 1
+0024 7F14             17     MOV R7,#014h            ; 3
+                      18     ; 4C per 20
+0026                  19     OUT:
+                      20     
+0026 32               21     reti                            ;2C
+                      22     
+0030                  23     ORG 0030H
+0030                  24     MAIN: 
+                      25     
+                      26     
+0030 75A000           27     MOV P2,#00h     ;3C
+0033 75B000           28     MOV P3,#00h     ;3C
+                      29     
+                      30     
+                      31     ;TIMER 0 
+0036 758901           32     MOV TMOD ,#001H
+0039 758A00           33     MOV TL0,#000H
+003C 758CEE           34     MOV TH0,#0EEH
+003F 75A882           35     MOV IE,#082H
+                      36     ;SETB TR0
+                      37     
+                      38     
+0042                  39     WHILE:
+0042 75A080           40     MOV P2 ,#10000000B
+0045 75B0C3           41     MOV P3 ,#11000011B
+0048 116A             42     ACALL Delay
+                      43     
+004A 75A040           44     MOV P2 ,#01000000B
+004D 116A             45     ACALL Delay
+004F 75A020           46     MOV P2 ,#00100000B
+0052 116A             47     ACALL Delay
+0054 75A010           48     MOV P2 ,#00010000B
+0057 116A             49     ACALL Delay
+0059 75A008           50     MOV P2 ,#00001000B
+005C 116A             51     ACALL Delay
+005E 75A002           52     MOV P2 ,#00000010B
+0061 116A             53     ACALL Delay
+0063 75A001           54     MOV P2 ,#00000001B
+0066 116A             55     ACALL Delay
+                      56     
+                      57     
+A51 MACRO ASSEMBLER  MAIN                                                                 12/13/2018 00:07:50 PAGE     2
+
+                      58     
+                      59     
+                      60     
+0068 80D8             61     SJMP WHILE  
+                      62     
+                      63      
+                      64     
+006A                  65     Delay:
+006A 7524FA           66     MOV  36,#250    ;3
+006D                  67     Delay1:
+006D 7525FA           68     MOV  37,#250            ;3
+0070 D525FD           69     DJNZ  37,$                      ;2
+0073 D524F7           70     DJNZ  36,Delay1                 ;2
+0076 22               71     RET                                     ;2C
+                      72     
+                      73     ; 3 + 2 + (3 + 2 + 2*112)*5 = 921 * 1.085us = ~1ms
+                      74     
+                      75     
+0077                  76     DelaySTART:
+0077 752477           77     MOV  36,#077h   ;3
+007A                  78     Delay1S:
+007A 752577           79     MOV  37,#077h           ;3
+007D D525FD           80     DJNZ  37,$                      ;2
+0080 D524F7           81     DJNZ  36,Delay1S                ;2
+0083 22               82     RET                                     ;2C
+                      83     
+                      84     END 
+                             
+A51 MACRO ASSEMBLER  MAIN                                                                 12/13/2018 00:07:50 PAGE     3
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+DELAY. . . . . . .  C ADDR   006AH   A   
+DELAY1 . . . . . .  C ADDR   006DH   A   
+DELAY1S. . . . . .  C ADDR   007AH   A   
+DELAYSTART . . . .  C ADDR   0077H   A   
+IE . . . . . . . .  D ADDR   00A8H   A   
+MAIN . . . . . . .  C ADDR   0030H   A   
+OUT. . . . . . . .  C ADDR   0026H   A   
+P2 . . . . . . . .  D ADDR   00A0H   A   
+P3 . . . . . . . .  D ADDR   00B0H   A   
+TH0. . . . . . . .  D ADDR   008CH   A   
+TH1. . . . . . . .  D ADDR   008DH   A   
+TL0. . . . . . . .  D ADDR   008AH   A   
+TL1. . . . . . . .  D ADDR   008BH   A   
+TMOD . . . . . . .  D ADDR   0089H   A   
+WHILE. . . . . . .  C ADDR   0042H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)
