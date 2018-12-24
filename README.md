@@ -1,6 +1,6 @@
 # 8051-Real-Time-Clock
 Using Assembly code on AT89S52 to create a clock without using DS1307.
-And the clock can be slow 1s/week  -> 1year the clock will be slow smaller than 1 minute.
+I don't know how long can the clock be slow 1 minute , I have no time to test it :D but i think it can reach about 2 - 3 years because my clock is slow 1s around 15 - 25days.
 
 USER GUIDE:
 
