@@ -1,11 +1,13 @@
-- Video : https://www.youtube.com/watch?v=ZXwfwDxMIpc&list=PL9FegcZTeB9LliIpxNh4CYu477SYDLmwC&index=12&t=0s
-# 8051-Real-Time-Clock
-Using Assembly code on AT89S52 to create a clock without using DS1307.
-I don't know how long can the clock be slow 1 minute , I have no time to test it :D but i think it can reach about 2 - 3 years because my clock is slow 1s around 15 - 25days.
+# Introduction
+- Using Assembly code on AT89S52 to create a clock without using DS1307.
+- I don't know how long can the clock be slow 1 minute, I have no time to test it :D but i think it can reach about 2 - 3 years because my clock is slow 1s around 15 - 25days.
 
-Some references to know instruction set size:
-+ https://www.win.tue.nl/~aeb/comp/8051/set8051.html
-+ http://www.keil.com/support/man/docs/is51/is51_mov.htm
+# Video: 
+- https://www.youtube.com/watch?v=ZXwfwDxMIpc&list=PL9FegcZTeB9LliIpxNh4CYu477SYDLmwC&index=12&t=0s
+
+# Some references:
+- https://www.win.tue.nl/~aeb/comp/8051/set8051.html
+- http://www.keil.com/support/man/docs/is51/is51_mov.htm
 
 # USER GUIDE:
 
